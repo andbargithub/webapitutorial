@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TodoApi.DTOs;
 using TodoApi.Models;
 
 namespace TodoApi.Controllers
@@ -22,14 +23,16 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
         {
-            return await _context.TodoItems.ToListAsync();
+            return await _context.TodoItems
+                .Select(t => t.ItemToDto())
+                .ToListAsync();
         }
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItem>> GetTodoItem(long id)
+        public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
         {
             var todoItem = await _context.TodoItems.FindAsync(id);
 
@@ -38,20 +41,25 @@ namespace TodoApi.Controllers
                 return NotFound();
             }
 
-            return todoItem;
+            return todoItem.ItemToDto();
         }
 
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+        public async Task<IActionResult> PutTodoItem(long id, TodoItemDTO todoItem)
         {
-            if (id != todoItem.ID)
+
+            var todoItemDb = await _context.TodoItems.Where(t => t.ID == id).FirstOrDefaultAsync();
+
+            if (todoItemDb != null && id != todoItemDb.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(todoItem).State = EntityState.Modified;
+            todoItemDb.ItemFromDto(todoItem);
+
+            _context.Entry(todoItemDb).State = EntityState.Modified;
 
             try
             {
@@ -75,12 +83,15 @@ namespace TodoApi.Controllers
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem)
+        public async Task<ActionResult<TodoItemDTO>> PostTodoItem(TodoItemDTO todoItem)
         {
-            _context.TodoItems.Add(todoItem);
+            var todoItemDb = new TodoItem();
+            todoItemDb.ItemFromDto(todoItem);
+            
+            _context.TodoItems.Add(todoItemDb);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTodoItem", new { id = todoItem.ID }, todoItem);
+            return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.ID }, todoItem);
         }
 
         // DELETE: api/TodoItems/5

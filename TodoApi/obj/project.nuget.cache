@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UEpeaFCFuCVDtLXmIqeAaHT8TFpK7pFX1bnEPTlx976grN5tU2Nvt5HGkjdOadhlr6fYapJ59A83sjQDeAQVlw==",
+  "dgSpecHash": "yap07oVmnO4j+SwhjhV530R66sV3koLRCJCiJ4hDc03DwEWUp7tBNz8Jgjq0uNggw6sZh+cawM1FEhMOGbad1Q==",
   "success": true,
-  "projectFilePath": "/home/anderson/Documents/Projects/WebApiMicrosoftTutorial/TodoApi/TodoApi.csproj",
+  "projectFilePath": "/home/anderson/Documents/GitHub/webapitutorial/TodoApi/TodoApi.csproj",
   "expectedPackageFiles": [
     "/home/anderson/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/anderson/.nuget/packages/messagepack/2.1.152/messagepack.2.1.152.nupkg.sha512",

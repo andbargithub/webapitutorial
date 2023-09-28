@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/anderson/Documents/Projects/WebApiMicrosoftTutorial/TodoApi/TodoApi.csproj": {}
+    "/home/anderson/Documents/GitHub/webapitutorial/TodoApi/TodoApi.csproj": {}
   },
   "projects": {
-    "/home/anderson/Documents/Projects/WebApiMicrosoftTutorial/TodoApi/TodoApi.csproj": {
+    "/home/anderson/Documents/GitHub/webapitutorial/TodoApi/TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/anderson/Documents/Projects/WebApiMicrosoftTutorial/TodoApi/TodoApi.csproj",
+        "projectUniqueName": "/home/anderson/Documents/GitHub/webapitutorial/TodoApi/TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "/home/anderson/Documents/Projects/WebApiMicrosoftTutorial/TodoApi/TodoApi.csproj",
+        "projectPath": "/home/anderson/Documents/GitHub/webapitutorial/TodoApi/TodoApi.csproj",
         "packagesPath": "/home/anderson/.nuget/packages/",
-        "outputPath": "/home/anderson/Documents/Projects/WebApiMicrosoftTutorial/TodoApi/obj/",
+        "outputPath": "/home/anderson/Documents/GitHub/webapitutorial/TodoApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/anderson/.nuget/NuGet/NuGet.Config"
